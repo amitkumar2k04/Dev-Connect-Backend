@@ -4,9 +4,6 @@ const app = express();
 
 // handling request
 // Handling different request in different way 
-app.use("/",(req, res) => {
-    res.send("Nameste from the Dashboard!! ");
-});
 
 app.use("/hello",(req, res) => {
     res.send("Hello there!! ");
@@ -14,6 +11,10 @@ app.use("/hello",(req, res) => {
 
 app.use("/test",(req, res) => {
     res.send("Hello from the test!! ");
+});
+
+app.use("/",(req, res) => {
+    res.send("Nameste from the Dashboard!! ");
 });
 
 
