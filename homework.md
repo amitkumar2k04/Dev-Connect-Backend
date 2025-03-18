@@ -13,3 +13,4 @@
 - play with routes and route extensions (e.x - /, /hello, /hello/2)
 - Order of the routes matters a lot
 - Install Postman app and Make a Workspace/collections > test API call 
+- Write logic to handle GET, POST, PATCH, PUT, DELETE - API calls and test them on POSTMAN 
