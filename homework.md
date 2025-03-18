@@ -18,3 +18,6 @@
 - use of regex in the routes /a, /.fly$/
 - How to reading the Queary params in the routes 
 - Reading the dynamic routes
+
+
+-- Episode-05 | Middlewares & Error Handlers
