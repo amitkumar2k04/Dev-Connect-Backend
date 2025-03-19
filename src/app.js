@@ -3,18 +3,13 @@ const connectDB = require("./config/database");
 const app = express();
 const User = require("./models/user");
 
+app.use(express.json());  // included middleware to all the routes 
 
 app.post("/signup",async(req, res) => {
-    // creating a userObj (& I wanted to save this data to DB)
-    const userObj = {
-        firstName : "Ketan",
-        lastName : "Raj",
-        emailId : "rajketan99@gmail.com",
-        password : "Ketan@123",
-    }
+    console.log(req.body);
 
     // creating new instance of User model (i.e we're creating a new user with these data)
-    const user = new User(userObj);
+    const user = new User(req.body);
 
     try{
         // saving data to DB
