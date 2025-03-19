@@ -27,5 +27,5 @@
 - What is Middleware?
 - How ExpressJs handles request behind the schene. Ans- It goes to the middleware chain and if anybody matches     gives the response back.
 - Difference between app.use And app.all in expressJs.
-
 - Why do we actually need middleware.
+- Error handling using -  app.use ("/", (err, req, res, next) => {});
