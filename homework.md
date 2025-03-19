@@ -21,3 +21,11 @@
 
 
 -- Episode-05 | Middlewares & Error Handlers
+- next()
+- next function and errors along with res.send()
+- app.use("/route", rH, (rH2, rH3), rH4)
+- What is Middleware?
+- How ExpressJs handles request behind the schene. Ans- It goes to the middleware chain and if anybody matches     gives the response back.
+- Difference between app.use And app.all in expressJs.
+
+- Why do we actually need middleware.
