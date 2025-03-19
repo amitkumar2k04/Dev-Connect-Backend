@@ -29,3 +29,14 @@
 - Difference between app.use And app.all in expressJs.
 - Why do we actually need middleware.
 - Error handling using -  app.use ("/", (err, req, res, next) => {});
+
+
+-- Episode-06 | Database, Schema & Models | Mongoose
+- create a free cluster on MongoDB
+- install mongoose library 
+- connect your application to <connection-url>/DevTinder
+- call the connectDB function and connect to database before starting application on 3000
+- create a userSchema & userModel
+- create POST /signup API calls to add data into the database
+- push some data-documents using API calls from postman
+- Error Handling using try-catch

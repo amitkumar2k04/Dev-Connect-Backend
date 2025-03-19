@@ -1,26 +1,36 @@
 const express = require("express");
+const connectDB = require("./config/database");
 const app = express();
+const User = require("./models/user");
 
-// error handling 
-app.get("/getUserData", (req, res) => {
-try{
-    // Logic to DB call and get user data 
 
-    throw new Error("abusida");
-    res.send("User data sent");
-} catch(err){
-    res.status(500).send("Some error contact support team");
-}
-});
-
-// error handling 
-app.use("/", (err, req, res, next) => {
-    if(err){
-        // Log your error
-        res.status(500).send("Something went wrong");
+app.post("/signup",async(req, res) => {
+    // creating a userObj (& I wanted to save this data to DB)
+    const userObj = {
+        firstName : "Ketan",
+        lastName : "Raj",
+        emailId : "rajketan99@gmail.com",
+        password : "Ketan@123",
     }
-});
 
-app.listen(3000, () => {
-    console.log("server is sucessfully listning on port 3000 .. ");
-});
+    // creating new instance of User model (i.e we're creating a new user with these data)
+    const user = new User(userObj);
+
+    try{
+        // saving data to DB
+        await user.save();
+        res.send("User added successfully");
+    } catch(err){
+        res.status(400).send("Error saving the user:" + err.message);
+    }
+})
+
+connectDB().then(() => {
+    console.log("Database connection enstablished ...");
+    // 1st DB connection made then start listening to the API calls
+    app.listen(3000, () => {
+        console.log("server is sucessfully listning on port 3000 .. ");
+    });
+}).catch(err => {
+    console.log("Database cannot be connection ...")
+})
