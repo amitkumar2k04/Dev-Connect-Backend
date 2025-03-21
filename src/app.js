@@ -20,6 +20,36 @@ app.post("/signup",async(req, res) => {
     }
 })
 
+// Get user by EmailId 
+app.get("/users", async (req, res) => {
+    const userEmail = req.body.emailId;
+
+    try{
+        const users = await User.find({emailId : userEmail});
+        if(users.length === 0){
+            res.status(404).send("User not found");
+        } else{
+            res.send(users);
+        }
+    } catch(err){
+        res.status(400).send("Something went wrong!");
+    }
+})
+
+
+// Feed API - GET/feed - get all the users from the database
+app.get("/feed", async (req, res) => {
+    try{
+        const users = await User.find({}); // passing empty filter, it will give us all the documents from the collections 
+        res.send(users);
+
+    } catch(err){
+        res.status(400).send("Something went wrong!");
+    }
+
+});
+
+
 connectDB().then(() => {
     console.log("Database connection enstablished ...");
     // 1st DB connection made then start listening to the API calls

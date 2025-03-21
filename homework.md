@@ -46,3 +46,4 @@ Episode-07 | Diving into the APIs
 - What is the difference between Javascript object and JSON.
 - Add the express.json middleware to your app
 - Make signUp API dynamic to receive data from the end your
+- get user by ID
