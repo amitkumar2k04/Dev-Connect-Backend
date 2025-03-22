@@ -14,6 +14,7 @@
   "author": "Amit Kumar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.21.2",
     "mongobd": "^0.0.1-security.0",
     "mongodb": "^6.15.0",

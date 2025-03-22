@@ -65,3 +65,10 @@ Episode-08 | Data Sanitization & Schema Validations
 - Data Sanitizing - Add API level validations on each fields.
 - Installed library - npm validator 
 - Explore validator library functions & use validator functions for password, emailId, photoUrl
+- never trust req.body 
+
+
+Episode-09 | Encrypting Passwords
+- Validate data in signup API 
+- Install npm bcrypt library 
+- Create password hashed using bcrypt.hash() & save the user with encrypted password

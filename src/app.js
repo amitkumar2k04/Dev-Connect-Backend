@@ -2,14 +2,31 @@ const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const User = require("./models/user");
+const {validateSignUpData} = require("./utils/validation");
+const bcrypt = require("bcrypt");
 
 app.use(express.json());  // included middleware to all the routes 
 
 app.post("/signup",async(req, res) => {
     console.log(req.body);
-
-    // creating new instance of User model (i.e we're creating a new user with these data)
-    const user = new User(req.body);
+    // Step 1 : validate your data 
+    try{
+        validateSignUpData(req);
+       // console.log(req.body);
+    } catch (err){
+        res.status(400).send("Error : " + err.message);
+    }
+    // step 2 : Encrypt the password
+    const {firstName, lastName, emailId, password} = req.body; // extracting the data out
+    const passwordHash = await bcrypt.hash(password, 10);
+    // console.log(passwordHash);
+    // Step 3: Store the data in DB - creating new instance of User model (i.e we're creating a new user with these data)
+    const user = new User({
+        firstName, 
+        lastName, 
+        emailId,
+        password : passwordHash,
+    });
 
     try{
         // saving data to DB
@@ -58,7 +75,7 @@ app.patch("/users/:userId", async (req, res) => {
         const ALLOWED_UPDATES = [
             "photoUrl", 
             "about", 
-            "gender", 
+            "gender",
             "age", 
             "skills"
         ];
