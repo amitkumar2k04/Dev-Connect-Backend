@@ -49,3 +49,15 @@ Episode-07 | Diving into the APIs
 - get user by emailId
 - get user by ID
 - created a delete user api
+- Add Api for Update & Delete a user
+- Explore Mongoose Docs Api for models
+- Explore from docs - What are the options in a Model.findOneAndUpdate Api
+- Create a Api to update a user with only single emailId
+
+
+Episode-08 | Data Sanitization & Schema Validations
+- Explore Schema types options from docs
+- Add required, unique, lowercase, min, minLength, trim, defalut
+- create - custom validate function
+- Improve DB schema - put all appropriate validations on each fields in Schema
+- Add timestamps to the users schema 
