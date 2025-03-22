@@ -37,6 +37,28 @@ app.post("/signup",async(req, res) => {
     }
 })
 
+// Creating Login API
+app.post("/login", async (req, res) => {
+    try{
+        const {emailId, password} = req.body;
+
+        const user = await User.findOne({emailId : emailId});
+        if(!user){
+            throw new Error("Invalid credentials");
+        }
+
+        const isPasswordValid = bcrypt.compare(password, user.password);
+        if(isPasswordValid) {
+            res.send("Login Successful");
+        } else {
+            throw new Error("Invalid credentials");
+        }
+
+    } catch(err){
+        res.status(400).send("Error:" + err.message);
+    }
+})
+
 // Get user by EmailId 
 app.get("/users", async (req, res) => {
     const userEmail = req.body.emailId;

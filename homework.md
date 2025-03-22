@@ -72,3 +72,5 @@ Episode-09 | Encrypting Passwords
 - Validate data in signup API 
 - Install npm bcrypt library 
 - Create password hashed using bcrypt.hash() & save the user with encrypted password
+- Create login API
+- Compare passwords and throw errors if email or password is invalid
