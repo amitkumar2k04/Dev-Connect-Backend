@@ -63,3 +63,5 @@ Episode-08 | Data Sanitization & Schema Validations
 - Add timestamps to the users schema 
 - Add API level validations on patch request & signUp post API 
 - Data Sanitizing - Add API level validations on each fields.
+- Installed library - npm validator 
+- Explore validator library functions & use validator functions for password, emailId, photoUrl
