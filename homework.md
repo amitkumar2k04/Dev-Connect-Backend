@@ -61,3 +61,5 @@ Episode-08 | Data Sanitization & Schema Validations
 - create - custom validate function
 - Improve DB schema - put all appropriate validations on each fields in Schema
 - Add timestamps to the users schema 
+- Add API level validations on patch request & signUp post API 
+- Data Sanitizing - Add API level validations on each fields.
