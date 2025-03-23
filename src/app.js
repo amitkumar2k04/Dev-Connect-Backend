@@ -11,6 +11,7 @@ const { userAuth } = require("./middlewares/auth");
 app.use(express.json());  // included middleware to all the routes 
 app.use(cookieParser());
 
+// creating signup API
 app.post("/signup",async(req, res) => {
     console.log(req.body);
     // Step 1 : validate your data 
@@ -55,9 +56,11 @@ app.post("/login", async (req, res) => {
         if(isPasswordValid) {
             // ===========================================
             // Create a JWT token 
-            const token = await jwt.sign({_id : user._id}, "DEV@Tinder$790");
+            const token = await jwt.sign({_id : user._id}, "DEV@Tinder$790", { expiresIn: '8h' });
             // Add the token to cookie and send the response back to the user
-            res.cookie("token", token);
+            res.cookie("token", token, {
+                expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
+            });
             // ===========================================
             res.send("Login Successful");
         } else {
@@ -78,6 +81,14 @@ app.get("/profile", userAuth, async(req, res) => {
     }catch(err){
         res.status(400).send("Something went wrong!");
     }
+});
+
+// sending connection request 
+app.post("/sendConnectionRequest", userAuth, async(req, res) => {
+    const user = req.user;
+
+    console.log("sending connection request");
+    res.send(user.firstName + " sent the connection request!");
 });
 
 // Get user by EmailId 

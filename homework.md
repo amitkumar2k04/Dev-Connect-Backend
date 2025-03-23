@@ -83,3 +83,6 @@ Episode-10 | Authentication, JWT & Cookies
 - install jsonWebToken 
 - In login api, After email & pass validation create a JWT token and sends back to user in cookies.
 - Read the cookies inside your profile API and find the logged in user.
+- Add userAuth middleware 
+- Add the userAuth middleware in /profile API and a new sendConnectionRequest API 
+- Set the expiry of JWT token & cookies Expiry
