@@ -4,8 +4,11 @@ const app = express();
 const User = require("./models/user");
 const {validateSignUpData} = require("./utils/validation");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 app.use(express.json());  // included middleware to all the routes 
+app.use(cookieParser());
 
 app.post("/signup",async(req, res) => {
     console.log(req.body);
@@ -49,6 +52,12 @@ app.post("/login", async (req, res) => {
 
         const isPasswordValid = bcrypt.compare(password, user.password);
         if(isPasswordValid) {
+            // ===========================================
+            // Create a JWT token 
+            const token = await jwt.sign({_id : user._id}, "DEV@Tinder$790");
+            // Add the token to cookie and send the response back to the user
+            res.cookie("token", token);
+            // ===========================================
             res.send("Login Successful");
         } else {
             throw new Error("Invalid credentials");
@@ -58,6 +67,31 @@ app.post("/login", async (req, res) => {
         res.status(400).send("Error:" + err.message);
     }
 })
+
+// get user profile 
+app.get("/profile", async(req, res) => {
+    try{
+        const cookies = req.cookies;
+        const {token} = cookies;
+        if(!token){
+            throw new Error("Invalid Token");
+        }
+        // validate token 
+        const decdedMess = await jwt.verify(token, "DEV@Tinder$790");
+        // console.log(decdedMess);
+        const {_id} = decdedMess;
+        // console.log("Logged in user is: " + _id);
+        // getting profile data back from server & sent back 
+        const user = await User.findById(_id);
+        // err handling - if token valid but user not exist in DB.
+        if(!user){
+            throw new Error("User does't exist");
+        }
+        res.send(user);
+    }catch(err){
+        res.status(400).send("Something went wrong!");
+    }
+});
 
 // Get user by EmailId 
 app.get("/users", async (req, res) => {
