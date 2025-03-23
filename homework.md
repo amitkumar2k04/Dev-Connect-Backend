@@ -71,7 +71,7 @@ Episode-08 | Data Sanitization & Schema Validations
 Episode-09 | Encrypting Passwords
 - Validate data in signup API 
 - Install npm bcrypt library 
-- Create password hashed using bcrypt.hash() & save the user with encrypted password
+- Create password hashed using <bcrypt.hash()> & save the user with encrypted password
 - Create login API
 - Compare passwords and throw errors if email or password is invalid
 
@@ -79,7 +79,7 @@ Episode-09 | Encrypting Passwords
 Episode-10 | Authentication, JWT & Cookies
 - install cookie-parser
 - just send dummy cookie to user 
-- Create GET (/profile) api and check if you get the cookie back 
+- Create GET </profile> api and check if you get the cookie back 
 - install jsonWebToken 
 - In login api, After email & pass validation create a JWT token and sends back to user in cookies.
 - Read the cookies inside your profile API and find the logged in user.
