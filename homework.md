@@ -86,3 +86,13 @@ Episode-10 | Authentication, JWT & Cookies
 - Add userAuth middleware 
 - Add the userAuth middleware in /profile API and a new sendConnectionRequest API 
 - Set the expiry of JWT token & cookies Expiry
+
+Episode-11 | Diving into the APIs and express Router
+ - Explore Tinder APIs
+ - create a list of all APIs you can think of in DevTinder
+ - Group multiple routes under respective routers
+ - Read documentation for express.router
+ - create route folder for managing auth, profile, request routes
+ - create authRouter, profileRouter, requestRouter 
+ - Import these routers in app.js
+ 

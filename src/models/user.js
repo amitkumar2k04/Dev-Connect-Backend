@@ -82,7 +82,7 @@ userSchema.methods.getJWT = async function () {
         expiresIn: '8h',
     });
     return token;
-}
+};
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
