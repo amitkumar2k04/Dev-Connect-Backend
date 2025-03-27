@@ -3,6 +3,7 @@ const authRouter = express.Router();
 const User = require("../models/user");
 const {validateSignUpData} = require("../utils/validation");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 
 // creating signup API
@@ -50,8 +51,10 @@ authRouter.post("/login", async (req, res) => {
         if(isPasswordValid) {
             // ===========================================
             // Create a JWT token 
-            const token = await User.getJWT;
-            console.log(token);
+            const token = await jwt.sign({_id : user._id}, "DEV@Tinder$790", { 
+                    expiresIn: '8h',
+                });
+            //console.log(token);
             // Add the token to cookie and send the response back to the user
             res.cookie("token", token, {
                 expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
@@ -65,6 +68,15 @@ authRouter.post("/login", async (req, res) => {
     } catch(err){
         res.status(400).send("Error:" + err.message);
     }
-})
+});
+
+
+// creating Loggout API
+authRouter.post("/logout", (req, res) => {
+    res.cookie("token", null, {
+        expires : new Date(Date.now()),
+    });
+    res.send("Logout successful!");
+});
 
 module.exports = authRouter;
