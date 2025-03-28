@@ -15,8 +15,8 @@ app.use("/", authRouter, profileRouter, requestRouter);
 connectDB().then(() => {
     console.log("Database connection enstablished ...");
     // 1st DB connection made then start listening to the API calls
-    app.listen(4000, () => {
-        console.log("server is sucessfully listning on port 4000 .. ");
+    app.listen(5000, () => {
+        console.log("server is sucessfully listning on port 5000 .. ");
     });
 }).catch(err => {
     console.log("Database cannot be connection ...")
