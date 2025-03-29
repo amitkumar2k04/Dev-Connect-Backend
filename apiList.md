@@ -20,8 +20,8 @@
 - POST /request/review/rejected/:requestId
 
  ## Router : userRouter
-- GET /user/connections    // view all my connections
-- GET /user/requests/received/:requestId
+- GET /user/requests/received/:requestId    // view all the request received 
+- GET /user/connections                     // view all my connections
 - GET /user/feed          // Gets you the profile of others users on platform  
 
 

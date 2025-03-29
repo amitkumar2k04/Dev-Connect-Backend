@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
+const User = require("./user");
 // creating schema
 const connectionRequest = new mongoose.Schema(
   {
     fromUserId: {
       type: mongoose.Schema.Types.ObjectId,
+      ref : "User",   // refrence to the user collections 
       required: true,
     },
     toUserId: {
