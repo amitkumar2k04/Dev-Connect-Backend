@@ -100,4 +100,5 @@ Episode-11 | Diving into the APIs and express Router
 Episode-13 | ref, Populate & Thought process of writing APIs
  - Read about ref & populate in Mongoose  https://mongoosejs.com/docs/populate.html
  - Create GET api /user/requests/received/ with all the checks
+ - Create GET /user/collections
  
