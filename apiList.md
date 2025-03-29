@@ -11,10 +11,11 @@
 - PATCH /profile/password
 
  ## Router : connectionRequestRouter
-    // Sending connection request 
-- POST /request/send/interested/:userId
+    // Sending connection request               Note: Make status dynamic by using single API
+- POST /request/send/interested/:userId        
 - POST /request/send/ignored/:userId
-    // received connection request 
+
+    // received connection request              Note: Make status dynamic by using single API
 - POST /request/review/accepted/:requestId
 - POST /request/review/rejected/:requestId
 

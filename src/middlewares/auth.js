@@ -30,3 +30,9 @@ const userAuth = async (req, res, next) => {
 module.exports = {
   userAuth,
 };
+
+/*
+ Note : What this userAuth do? => This userAuth checks wheather the cookies has token & that token is valid or not.
+        And then it will findout the information about loggedIn user & It will get the loggedIn user information from DB.
+        & finally it will call the next(). 
+*/
