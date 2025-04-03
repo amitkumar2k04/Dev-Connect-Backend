@@ -102,3 +102,16 @@ Episode-13 | ref, Populate & Thought process of writing APIs
  - Create GET api /user/requests/received/ with all the checks
  - Create GET /user/collections
  
+
+
+
+ ## Razorpay payment Gateway Integration 
+       - Created a UI for premium page 
+       - Creating an API for create order in backend
+       - Creating an API for create order in Backend 
+       - Added my key & secrets in .env file 
+       - Initialize Razorpay in utils 
+       - creating order on RazorPay
+       - Craeted Schema & model 
+       - Saved the order in payments collection 
+       - make the API dynamic
