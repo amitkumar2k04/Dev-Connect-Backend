@@ -48,6 +48,13 @@ const userSchema = new mongoose.Schema(
         }
       },
     },
+    isPremium : {
+      type : Boolean,
+      default : false,
+    },
+    memberShipType: {   // Gold or Silver
+      type : String,
+    },
     photoUrl: {
         type: String,
         default: "https://www.vhv.rs/viewpic/ihmxhJ_dummy-image-of-user-hd-png-download/#",

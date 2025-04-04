@@ -106,12 +106,17 @@ Episode-13 | ref, Populate & Thought process of writing APIs
 
 
  ## Razorpay payment Gateway Integration 
+      PART: 01
        - Created a UI for premium page 
        - Creating an API for create order in backend
-       - Creating an API for create order in Backend 
        - Added my key & secrets in .env file 
        - Initialize Razorpay in utils 
        - creating order on RazorPay
        - Craeted Schema & model 
        - Saved the order in payments collection 
-       - make the API dynamic
+       PART : 02
+       - ref Docs: https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#api-sample-code
+       - ref - https://github.com/razorpay/razorpay-node/blob/master/documents/webhook.md
+       - ref : https://razorpay.com/docs/webhooks/validate-test/
+       - ref : https://razorpay.com/docs/webhooks/payloads/payments/
+       - Creating API for webhooks
