@@ -75,6 +75,13 @@ But status should always be intrested
 userRouter.get("/feed", userAuth, async (req, res) => {
   try {
     const loggedInUser = req.user;
+
+    const page = parseInt(req.query.page)    || 1;
+    let limit = parseInt(req.query.limit)  || 10;
+    limit = limit > 50 ? 50 : limit;
+    
+    const skip = ( page - 1 ) * limit;
+
     // CASE 1: finding out all the connection request [That we send & We received (Both)] - We doing bcz -> If I send & received request of somebody so, I should not see them on my feed.
     const connectionRequests = await connectionRequestModel
       .find({
@@ -96,7 +103,7 @@ userRouter.get("/feed", userAuth, async (req, res) => {
         { _id: { $ne: loggedInUser._id } },
       ], // this fun </ Array.from(hideUsersFromFeed) /> is to convert the Set into Array
       // And we also don't want to visible my profile on feed - so bcz of that we write OR query - We write here whose ids is not equal to loggedIn UserId - i.e. </ $ne : loggedInUser._id />
-    }).select(USER_SAFE_DATA);
+    }).select(USER_SAFE_DATA).skip(skip).limit(limit);
 
     res.send(users);
 
