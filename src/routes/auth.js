@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 // creating signup API
 authRouter.post("/signup",async(req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     // Step 1 : validate your data 
     try{
         validateSignUpData(req);
@@ -30,8 +30,16 @@ authRouter.post("/signup",async(req, res) => {
 
     try{
         // saving data to DB
-        await user.save();
-        res.send("User added successfully");
+        const savedUser = await user.save();
+
+        const token = await jwt.sign({_id : savedUser._id}, "DEV@Tinder$790", { 
+            expiresIn: '8h',
+        });
+        res.cookie("token", token, {
+            expires: new Date(Date.now() + 8 * 3600000)
+        });
+        
+        res.json({message : "User added successfully!", data : savedUser});
     } catch(err){
         res.status(400).send("Error saving the user:" + err.message);
     }
@@ -60,7 +68,7 @@ authRouter.post("/login", async (req, res) => {
                 expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
             });
             // ===========================================
-            res.send("Login Successful");
+            res.send(user);
         } else {
             throw new Error("Invalid credentials");
         }

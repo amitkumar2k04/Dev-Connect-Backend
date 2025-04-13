@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema(
     },
     photoUrl: {
         type: String,
-        default: "https://www.vhv.rs/viewpic/ihmxhJ_dummy-image-of-user-hd-png-download/#",
+        default: "https://static.vecteezy.com/system/resources/previews/023/465/800/non_2x/remove-contact-dark-mode-glyph-ui-icon-delete-unwanted-user-address-book-user-interface-design-white-silhouette-symbol-on-black-space-solid-pictogram-for-web-mobile-isolated-illustration-vector.jpg",
         validate(value) {
             if(!validator.isURL(value)){
                 throw new Error("Invalid photo URL: " + value);

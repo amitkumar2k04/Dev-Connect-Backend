@@ -28,7 +28,7 @@ paymentRouter.post("/payment/create", userAuth, async(req, res) => {
           });
 
           // save it to my DB
-          console.log(order);
+          // console.log(order);
           const payment = new Payment({
             userId : req.user._id,
             orderId : order.id,
@@ -95,9 +95,9 @@ paymentRouter.post("/payment/webhook", async (req, res) => {
 
 paymentRouter.get("/premium/verify", userAuth, async (req, res) => {
   const user = req.user.toJSON();
-  console.log(user);
+  // console.log(user);
   if (user.isPremium) {
-    console.log(user.isPremium);
+    // console.log(user.isPremium);
     return res.json({ ...user });
   }
   return res.json({ ...user });

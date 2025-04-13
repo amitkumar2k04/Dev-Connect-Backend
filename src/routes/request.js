@@ -70,7 +70,7 @@ requestRouter.post(
 
         // Step1 : validating the status 
         const allowedStatus = ["accepted", "rejected"];
-        console.log(allowedStatus);
+        // console.log(allowedStatus);
         if (!allowedStatus.includes(status)) {
             return res.status(400).send({message: "status is not allowed"})
         }

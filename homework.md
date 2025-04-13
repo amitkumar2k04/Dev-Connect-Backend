@@ -101,8 +101,16 @@ Episode-13 | ref, Populate & Thought process of writing APIs
  - Read about ref & populate in Mongoose  https://mongoosejs.com/docs/populate.html
  - Create GET api /user/requests/received/ with all the checks
  - Create GET /user/collections
- 
 
+
+ Episode-14 |Building Feed API & Pagination
+     - Apply logic to build feed API 
+     - Explore the $nin, $and, $ne and other query comparision operators
+ 
+          ADDING PAGINATION 
+               /feed?page=1&limit=10 =>  01 - 10   =>    .skip(0)   &  .limit(10)
+               /feed?page=2&limit=10 =>  11 - 20   =>    .skip(10)  &  .limit(10)
+               /feed?page=3&limit=10 =>  21 - 30   =>    .skip(20)  &  .limit(10)
 
 
  ## Razorpay payment Gateway Integration 
