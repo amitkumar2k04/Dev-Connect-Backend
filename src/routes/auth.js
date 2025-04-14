@@ -32,7 +32,7 @@ authRouter.post("/signup",async(req, res) => {
         // saving data to DB
         const savedUser = await user.save();
 
-        const token = await jwt.sign({_id : savedUser._id}, "DEV@Tinder$790", { 
+        const token = await jwt.sign({_id : savedUser._id}, process.env.JWT_SECRET, { 
             expiresIn: '8h',
         });
         res.cookie("token", token, {
@@ -59,7 +59,7 @@ authRouter.post("/login", async (req, res) => {
         if(isPasswordValid) {
             // ===========================================
             // Create a JWT token 
-            const token = await jwt.sign({_id : user._id}, "DEV@Tinder$790", { 
+            const token = await jwt.sign({_id : user._id}, process.env.JWT_SECRET, { 
                     expiresIn: '8h',
                 });
             //console.log(token);

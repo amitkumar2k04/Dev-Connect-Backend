@@ -9,6 +9,7 @@ const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
 const cors = require("cors");
 const paymentRouter = require("./routes/payment");
+require('dotenv').config()
 
 app.use(express.json());
 app.use(cookieParser());
@@ -28,7 +29,7 @@ app.use("/", paymentRouter);
 connectDB().then(() => {
     console.log("Database connection enstablished ...");
     // 1st DB connection made then start listening to the API calls
-    app.listen(5000, () => {
+    app.listen(process.env.PORT, () => {
         console.log("server is sucessfully listning on port 5000 .. ");
     });
 }).catch(err => {

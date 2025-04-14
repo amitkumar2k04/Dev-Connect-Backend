@@ -128,3 +128,10 @@ Episode-13 | ref, Populate & Thought process of writing APIs
        - ref : https://razorpay.com/docs/webhooks/validate-test/
        - ref : https://razorpay.com/docs/webhooks/payloads/payments/
        - Creating API for webhooks
+
+
+
+
+  ## Deployment on AWS (Backend)
+
+  sudo nano .env
