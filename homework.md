@@ -123,10 +123,10 @@ Episode-13 | ref, Populate & Thought process of writing APIs
        - Craeted Schema & model 
        - Saved the order in payments collection 
        PART : 02
-       - ref Docs: https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#api-sample-code
-       - ref - https://github.com/razorpay/razorpay-node/blob/master/documents/webhook.md
-       - ref : https://razorpay.com/docs/webhooks/validate-test/
-       - ref : https://razorpay.com/docs/webhooks/payloads/payments/
+       - ref Docs : https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#api-sample-code
+       - ref      : https://github.com/razorpay/razorpay-node/blob/master/documents/webhook.md
+       - ref      : https://razorpay.com/docs/webhooks/validate-test/
+       - ref      : https://razorpay.com/docs/webhooks/payloads/payments/
        - Creating API for webhooks
 
 
@@ -134,4 +134,51 @@ Episode-13 | ref, Populate & Thought process of writing APIs
 
   ## Deployment on AWS (Backend)
 
-  sudo nano .env
+   #  cmd :   sudo nano .env                 -> To setup the .env configurations at ec2 instance
+  Note : If we want to our application is LIVE 24*7 hours -> Then we need a pkg named : pm2, bcz we cannot open our terminal forever.
+         pm2 -> It is basically a process manager that helps to keep our webApp LIVE 2487 hour.
+   #  cmd :   npm install pm2 -g             -> To install pm2      
+   #  cmd :   pm2 start npm -- start         -> This cmd help to make LIVE our backend forever, By using pm2.
+   #  cmd :   pm2 logs                       -> To checks all logs -> e.g - When our app not started then we can see the logs 
+   #  cmd :   pm2 flush npm                  -> To clear all logs    Note: npm is the name of the application
+   #  cmd :   pm2 list                       -> It shows the lists of all the process which is started by pm2.
+   #  cmd :   pm2 stop npm                   -> It will stop the process  .. From Online to Stopped .. Note: npm is the name of the app.
+   #  cmd :   pm2 delete npm                 -> It will delete the process.  Note : npm is the name of the app, You can change a/c to name
+   #  cmd :   pm2 start npm --name "DevConnect-Backend" -- start       -> It helps to edit default name: from npm to DevConnect-Backend
+
+
+   #### Connecting Both frontend & Backend
+   Frontend : http://13.203.103.51/
+   Backend  : http://13.203.103.51:5000/
+
+   Domain name = devconnect.in => 13.203.103.51
+
+   Frontend : devconnect.in
+   Backend  : devconnect.in:5000    => devconnect.in/api     
+   
+   Note : our '/api' will mapped to the port no, i.e means our backend will run on '/api' & Our frontend will run on devconnect.in
+   Note : To map 'portNo' to '/api' - for that we need - ngnix proxy pass  -> So, that any request comes to our server it goes via ngnix, that's why here ngnix is also acts as a load balancer. Ngnix is a web server, It also acts as load balancer.
+
+
+
+# These configuration we need to put in ngnix config
+       server_name 13.203.103.51;
+
+       location /api/ {
+        proxy_pass http://localhost:5000/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+     Note : config nginx path : /etc/nginx/sites-available/default
+     Note: After setup the ngnix config, we need to restart nginx - cmd : sudo systemctl restart nginx
+
+
+    Note : there is config file in ngnix, we need to edit it. By using below cmd: 
+    - sudo nano /etc/nginx/sites-available/default
+
+
+    #### After edit nginx config file & restarted the nginx Now, At next step we need : Modify the frontend BASE_URL to /api
