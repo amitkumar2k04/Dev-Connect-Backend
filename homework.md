@@ -182,3 +182,23 @@ Episode-13 | ref, Populate & Thought process of writing APIs
 
 
     #### After edit nginx config file & restarted the nginx Now, At next step we need : Modify the frontend BASE_URL to /api
+
+
+
+
+## Sending emails through AWS (SES INTEGRATION)
+docs : https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/ses-examples-sending-email.html
+ - Create a IAM user
+ - Give Access to AmazonSESFull Access
+ - Amazon SES : Create an Identity
+ - Verify your domain name : By changing the DNS configurations to cloudflare  
+ - Verify an email address
+ - Install AWS SDK - (v3)
+     SES code examples:  https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+ - Access credentials should be created in IAM under securityCredentials Tab
+ - Add the credentials in the env file 
+ - write code for SES_Client
+ - write code for sending emails address
+ - Make the email dynamic by passing more params to the run function
+
+
