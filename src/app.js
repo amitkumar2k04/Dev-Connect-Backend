@@ -11,6 +11,8 @@ const cors = require("cors");
 const paymentRouter = require("./routes/payment");
 require('dotenv').config()
 
+require("./utils/cronjobs");
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(

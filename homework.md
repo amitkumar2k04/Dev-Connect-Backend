@@ -202,3 +202,11 @@ docs : https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/ses-exa
  - Make the email dynamic by passing more params to the run function
 
 
+- # Scheduling CRON jobs in NodeJs
+- Installing node-cron
+- Learning about cron expression syntax - crontab.guru
+- schedule a job 
+- learned about library: date-fns
+- Find all the unique Id who have got connection request in proevious days
+- send email 
+- make send email function dynamic
