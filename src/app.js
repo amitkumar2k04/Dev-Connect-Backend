@@ -2,13 +2,14 @@ const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
-
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
 const cors = require("cors");
 const paymentRouter = require("./routes/payment");
+const http = require ("http");
+const initializeSocket = require ("./utils/socket");
 require('dotenv').config()
 
 require("./utils/cronjobs");
@@ -28,10 +29,15 @@ app.use("/", requestRouter);
 app.use("/", userRouter);
 app.use("/", paymentRouter);
 
+
+const server = http.createServer(app);
+initializeSocket(server);
+
+
 connectDB().then(() => {
     console.log("Database connection enstablished ...");
     // 1st DB connection made then start listening to the API calls
-    app.listen(process.env.PORT, () => {
+    server.listen(process.env.PORT, () => {
         console.log("server is sucessfully listning on port 5000 .. ");
     });
 }).catch(err => {
